@@ -60,10 +60,9 @@
 		7ADD8F8F2539EEB9006D6CAE /* KobayashiMaru */ = {
 			isa = PBXGroup;
 			children = (
+				7AF20D58253A01870029D595 /* Models */,
+				7AF20D54253A015D0029D595 /* Controllers */,
 				7ADD8F962539EEB9006D6CAE /* Main.storyboard */,
-				7ADD8FA52539F025006D6CAE /* PairsTableViewController.swift */,
-				7ADD8FA72539F05C006D6CAE /* Person.swift */,
-				7ADD8FA92539F07F006D6CAE /* PersonController.swift */,
 				7ADD8FA42539EEDC006D6CAE /* Resources */,
 			);
 			path = KobayashiMaru;
@@ -79,6 +78,39 @@
 				7ADD8F9E2539EEC0006D6CAE /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		7AF20D54253A015D0029D595 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7AF20D56253A01750029D595 /* View Controllers */,
+				7AF20D55253A016C0029D595 /* Model Controllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7AF20D55253A016C0029D595 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7ADD8FA92539F07F006D6CAE /* PersonController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		7AF20D56253A01750029D595 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7ADD8FA52539F025006D6CAE /* PairsTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		7AF20D58253A01870029D595 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7ADD8FA72539F05C006D6CAE /* Person.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
