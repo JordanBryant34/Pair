@@ -20,8 +20,8 @@ class PersonController {
     }
     
     func addPerson(person: Person) {
-        if pairsOfPeople[0].count != 2 {
-            pairsOfPeople[0].append(person)
+        if pairsOfPeople.isEmpty {
+            pairsOfPeople.append([person])
             return
         }
         
@@ -37,8 +37,14 @@ class PersonController {
         pairsOfPeople.append([person])
     }
     
-    func deletePerson(person: Person) {
+    func deletePersonAtIndex(section: Int, row: Int) {
+        pairsOfPeople[section].remove(at: row)
         
+        if pairsOfPeople[section].count == 1 {
+            let oldPartner = pairsOfPeople[section][0]
+            pairsOfPeople.remove(at: section)
+            addPerson(person: oldPartner)
+        }
     }
     
     func shufflePairs() {

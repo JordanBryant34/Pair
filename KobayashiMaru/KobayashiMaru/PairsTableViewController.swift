@@ -27,6 +27,14 @@ class PairsTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            personController.deletePersonAtIndex(section: indexPath.section, row: indexPath.row)
+    
+            tableView.reloadData()
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if personController.pairsOfPeople.count > 1 {
             return "Pair \(section + 1)"
