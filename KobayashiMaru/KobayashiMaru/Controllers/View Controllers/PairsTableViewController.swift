@@ -31,7 +31,7 @@ class PairsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if personController.pairsOfPeople.count > 1 {
+        if personController.pairsOfPeople.count > 1 && personController.pairsOfPeople[section].count != 0 {
             return "Pair \(section + 1)"
         } else {
             return nil
