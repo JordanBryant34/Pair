@@ -17,6 +17,7 @@ class PersonController {
     func createNewPerson(name: String) {
         let person = Person(name: name)
         addPerson(person: person)
+        saveToPersistentStore()
     }
     
     func addPerson(person: Person) {
@@ -35,6 +36,8 @@ class PersonController {
         }
         
         pairsOfPeople.append([person])
+        
+        saveToPersistentStore()
     }
     
     func deletePersonAtIndex(section: Int, row: Int) {
@@ -45,12 +48,48 @@ class PersonController {
             pairsOfPeople.remove(at: section)
             addPerson(person: oldPartner)
         }
+        
+        saveToPersistentStore()
     }
     
     func shufflePairs() {
         var iterator = pairsOfPeople.joined().shuffled().makeIterator()
         
         pairsOfPeople = pairsOfPeople.map { $0.compactMap { _ in iterator.next() }}
+        
+        saveToPersistentStore()
+    }
+    
+    func fileURL() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectory = paths[0]
+        let filename = "pairs.json"
+        let fullURL = documentDirectory.appendingPathComponent(filename)
+
+        return fullURL
     }
 
+    func saveToPersistentStore() {
+        let encoder = JSONEncoder()
+
+        do {
+            let data = try encoder.encode(pairsOfPeople)
+            try data.write(to: fileURL())
+        } catch let error {
+            print("Error saving pairs: \(error.localizedDescription)")
+        }
+    }
+
+    func loadFromPersistentStore() {
+        let decoder = JSONDecoder()
+
+        do {
+            let data = try Data(contentsOf: fileURL())
+            let pairsOfPeople = try decoder.decode([[Person]].self, from: data)
+            self.pairsOfPeople = pairsOfPeople
+        } catch let error {
+            print("Error loading from storage: \(error.localizedDescription)")
+        }
+    }
+    
 }
