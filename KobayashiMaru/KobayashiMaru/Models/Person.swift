@@ -16,9 +16,3 @@ class Person: Codable {
         self.name = name
     }
 }
-
-extension Person: Equatable {}
-
-func ==(lhs: Person, rhs: Person) -> Bool {
-    return lhs.name == rhs.name
-}

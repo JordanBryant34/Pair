@@ -12,12 +12,7 @@ class PairsTableViewController: UITableViewController {
     
     let personController = PersonController.shared
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-    }
-    
+    //MARK: - TableView Delegate Functions
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId")!
         let person = personController.pairsOfPeople[indexPath.section][indexPath.row]
@@ -51,6 +46,7 @@ class PairsTableViewController: UITableViewController {
         return personController.pairsOfPeople[section].count
     }
     
+    //MARK: - Actions
     @IBAction func addPersonTapped(_ sender: Any) {
         let alertController = UIAlertController(title: "Add a new person", message: nil, preferredStyle: .alert)
         

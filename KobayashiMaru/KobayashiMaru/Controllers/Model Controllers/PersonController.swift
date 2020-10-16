@@ -14,6 +14,7 @@ class PersonController {
     
     var pairsOfPeople: [[Person]] = [[]]
     
+    //MARK: - CRUD
     func createNewPerson(name: String) {
         let person = Person(name: name)
         addPerson(person: person)
@@ -60,6 +61,7 @@ class PersonController {
         saveToPersistentStore()
     }
     
+    //MARK: - Persistence
     func fileURL() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = paths[0]
